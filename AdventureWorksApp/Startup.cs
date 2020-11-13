@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using AdventureWorksApp.Models;
 using Serilog;
 using Serilog.Events;
+using AdventureWorksApp.Middleware;
 
 namespace AdventureWorksApp
 {
@@ -75,6 +76,8 @@ namespace AdventureWorksApp
                     diagnosticContext.Set("RequestScheme", httpContext.Request.Scheme);
                 };
             });
+
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseRouting();
 

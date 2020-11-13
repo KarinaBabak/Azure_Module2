@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AdventureWorksApp.Models;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace AdventureWorksApp.Controllers
 {
@@ -15,19 +15,18 @@ namespace AdventureWorksApp.Controllers
     public class ProductController : ControllerBase
     {
         private readonly AdventureWorks2016Context _context;
-        private readonly ILogger<ProductController> _logger;
+        private readonly ILogger _logger = Serilog.Log.ForContext<ProductController>();
 
-        public ProductController(AdventureWorks2016Context context, ILogger<ProductController> logger)
+        public ProductController(AdventureWorks2016Context context)
         {
             _context = context;
-            _logger = logger;
         }
 
         // GET: api/Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
-            _logger.LogInformation("Getting All Products");
+            _logger.Information("Getting All Products");
 
             return await _context.Product.ToListAsync();
         }
@@ -36,13 +35,13 @@ namespace AdventureWorksApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            _logger.LogInformation("Getting Product with id={id}", id);
+            _logger.Information("Getting Product with id={id}", id);
 
             var product = await _context.Product.FindAsync(id);
 
             if (product == null)
             {
-                _logger.LogWarning("The product with id={id} is not found", id);
+                _logger.Warning("The product with id={id} is not found", id);
                 return NotFound();
             }
 
@@ -55,11 +54,11 @@ namespace AdventureWorksApp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
-            _logger.LogInformation("Saving Product with id={id}", id);
+            _logger.Information("Saving Product with id={id}", id);
 
             if (id != product.ProductId)
             {
-                _logger.LogWarning("The product with id={id} does not match to prosuct with id={productId}", id, product.ProductId);
+                _logger.Warning("The product with id={id} does not match to product with id={productId}", id, product.ProductId);
                 return BadRequest();
             }
 
@@ -73,7 +72,7 @@ namespace AdventureWorksApp.Controllers
             {
                 if (!ProductExists(id))
                 {
-                    _logger.LogWarning("The product with id={id} is not found", id);
+                    _logger.Warning("The product with id={id} is not found", id);
                     return NotFound();
                 }
                 else
@@ -104,7 +103,7 @@ namespace AdventureWorksApp.Controllers
             var product = await _context.Product.FindAsync(id);
             if (product == null)
             {
-                _logger.LogWarning("The product with id={id} is not found", id);
+                _logger.Warning("The product with id={id} is not found", id);
                 return NotFound();
             }
 
