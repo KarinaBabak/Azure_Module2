@@ -86,6 +86,7 @@ namespace AdventureWorksApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("default", "api/{controller=Product}");
             });
         }
     }
