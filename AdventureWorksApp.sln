@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksApp", "AdventureWorksApp\AdventureWorksApp.csproj", "{930E6A97-C884-4D8E-9AA3-439EFC9E8B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorksApp", "AdventureWorksApp\AdventureWorksApp.csproj", "{930E6A97-C884-4D8E-9AA3-439EFC9E8B8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksApp.Tests", "AdventureWorksApp.Tests\AdventureWorksApp.Tests.csproj", "{67232916-AC02-4E8C-B1E8-2DF019784C3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{930E6A97-C884-4D8E-9AA3-439EFC9E8B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{930E6A97-C884-4D8E-9AA3-439EFC9E8B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{930E6A97-C884-4D8E-9AA3-439EFC9E8B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67232916-AC02-4E8C-B1E8-2DF019784C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67232916-AC02-4E8C-B1E8-2DF019784C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67232916-AC02-4E8C-B1E8-2DF019784C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67232916-AC02-4E8C-B1E8-2DF019784C3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
